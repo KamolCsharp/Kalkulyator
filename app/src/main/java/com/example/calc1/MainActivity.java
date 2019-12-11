@@ -146,92 +146,88 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()) {
             case R.id.button_zero:
                 if (addNumber("0")) equalClicked = false;
-                t=false;
+                t = false;
                 break;
             case R.id.button_one:
                 if (addNumber("1")) equalClicked = false;
-                t=false;
+                t = false;
                 break;
             case R.id.button_two:
                 if (addNumber("2")) equalClicked = false;
-                t=false;
+                t = false;
                 break;
             case R.id.button_three:
                 if (addNumber("3")) equalClicked = false;
-                t=false;
+                t = false;
                 break;
             case R.id.button_four:
                 if (addNumber("4")) equalClicked = false;
-                t=false;
+                t = false;
                 break;
             case R.id.button_five:
                 if (addNumber("5")) equalClicked = false;
-                t=false;
+                t = false;
                 break;
             case R.id.button_six:
                 if (addNumber("6")) equalClicked = false;
-                t=false;
+                t = false;
                 break;
             case R.id.button_seven:
                 if (addNumber("7")) equalClicked = false;
-                t=false;
+                t = false;
                 break;
             case R.id.button_eight:
                 if (addNumber("8")) equalClicked = false;
-                t=false;
+                t = false;
                 break;
             case R.id.button_nine:
                 if (addNumber("9")) equalClicked = false;
-                t=false;
+                t = false;
                 break;
             case R.id.button_addition:
-                if(t){
-                    textViewInputNumbers.setText(textViewInputNumbers.getText().toString().substring(0,textViewInputNumbers.getText().toString().length()-1));
-                    lastInput=lastInput.substring(0,lastInput.length()-1);
+                if (t && lastInput.length() > 0 && textViewInputNumbers.getText().toString().length() > 0) {
+                    textViewInputNumbers.setText(textViewInputNumbers.getText().toString().substring(0, textViewInputNumbers.getText().toString().length() - 1));
+                    lastInput = lastInput.substring(0, lastInput.length() - 1);
                     if (addOperand("+")) equalClicked = false;
-                    t=true;
-                }
-                else{
+                    t = true;
+                } else {
                     if (addOperand("+")) equalClicked = false;
-                    t=true;
+                    t = true;
                 }
 
                 break;
             case R.id.button_subtraction:
-                if(t){
-                    textViewInputNumbers.setText(textViewInputNumbers.getText().toString().substring(0,textViewInputNumbers.getText().toString().length()-1));
+                if (t && lastInput.length() > 0 && textViewInputNumbers.getText().toString().length() > 0) {
+                    textViewInputNumbers.setText(textViewInputNumbers.getText().toString().substring(0, textViewInputNumbers.getText().toString().length() - 1));
 
-                    lastInput=lastInput.substring(0,lastInput.length()-1);
+                    lastInput = lastInput.substring(0, lastInput.length() - 1);
                     if (addOperand("-")) equalClicked = false;
-                    t=true;
-                }
-                else{
+                    t = true;
+                } else {
                     if (addOperand("-")) equalClicked = false;
-                    t=true;
+                    t = true;
                 }
                 break;
             case R.id.button_multiplication:
-                if(t){
-                    textViewInputNumbers.setText(textViewInputNumbers.getText().toString().substring(0,textViewInputNumbers.getText().toString().length()-1));
+                if (t && lastInput.length() > 0 && textViewInputNumbers.getText().toString().length() > 0) {
+                    textViewInputNumbers.setText(textViewInputNumbers.getText().toString().substring(0, textViewInputNumbers.getText().toString().length() - 1));
 
-                    lastInput=lastInput.substring(0,lastInput.length()-1);
+                    lastInput = lastInput.substring(0, lastInput.length() - 1);
                     if (addOperand("x")) equalClicked = false;
-                    t=true;
-                }
-                else{
+                    t = true;
+                } else {
                     if (addOperand("x")) equalClicked = false;
-                    t=true;
+                    t = true;
                 }
                 break;
             case R.id.button_division:
-                if(t){
-                    textViewInputNumbers.setText(textViewInputNumbers.getText().toString().substring(0,textViewInputNumbers.getText().toString().length()-1));
+                if (t && lastInput.length() > 0 && textViewInputNumbers.getText().toString().length() > 0) {
+                    textViewInputNumbers.setText(textViewInputNumbers.getText().toString().substring(0, textViewInputNumbers.getText().toString().length() - 1));
 
-                    lastInput=lastInput.substring(0,lastInput.length()-1);
+                    lastInput = lastInput.substring(0, lastInput.length() - 1);
                     if (addOperand("\u00F7")) equalClicked = false;
-                    t=true;
-                }
-                else{
+                    t = true;
+                } else {
                     if (addOperand("\u00F7")) equalClicked = false;
                     t = true;
                 }
@@ -248,7 +244,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button_clear:
                 textViewInputNumbers.setText("");
                 openParenthesis = 0;
-                t=false;
+                t = false;
                 dotUsed = false;
                 lastExpression = "";
                 equalClicked = false;
@@ -258,7 +254,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     str.append(textViewInputNumbers.getText().toString());
                     str.delete(str.length() - 1, str.length());
                     textViewInputNumbers.setText(str);
-                    t=false;
+                    t = false;
                     str.delete(0, str.length());
                 } else {
                     Toast.makeText(getApplicationContext(), "raqam qolmadi", Toast.LENGTH_LONG).show();
@@ -294,16 +290,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private boolean addDot() {
         boolean done = false;
 
-        if (textViewInputNumbers.getText().length() == 0 ) {
+        if (textViewInputNumbers.getText().length() == 0) {
             textViewInputNumbers.setText("0.");
             dotUsed = true;
             done = true;
         } else if (dotUsed) {
-        } else if (defineLastCharacter(textViewInputNumbers.getText().charAt(textViewInputNumbers.getText().length() - 1) + "") == IS_OPERAND ) {
+        } else if (defineLastCharacter(textViewInputNumbers.getText().charAt(textViewInputNumbers.getText().length() - 1) + "") == IS_OPERAND) {
             textViewInputNumbers.setText(textViewInputNumbers.getText() + "0.");
             done = true;
             dotUsed = true;
-        } else if (defineLastCharacter(textViewInputNumbers.getText().charAt(textViewInputNumbers.getText().length() - 1) + "") == IS_NUMBER ) {
+        } else if (defineLastCharacter(textViewInputNumbers.getText().charAt(textViewInputNumbers.getText().length() - 1) + "") == IS_NUMBER) {
             textViewInputNumbers.setText(textViewInputNumbers.getText() + ".");
             done = true;
             dotUsed = true;
@@ -450,7 +446,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             result = result.replaceAll("\\.?0*$", "");
             textViewInputNumbers.setText(result);
         }
-  }
+    }
 
     private void saveLastExpression(String input) {
         String lastOfExpression = input.charAt(input.length() - 1) + "";
