@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Calc1</string>
+    <string name="a1"><![CDATA[<-]]></string>
+    <string name="a2">=</string>
+</resources>
