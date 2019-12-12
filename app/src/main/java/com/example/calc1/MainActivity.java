@@ -145,42 +145,52 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button_zero:
+                clearText();
                 if (addNumber("0")) equalClicked = false;
                 t = false;
                 break;
             case R.id.button_one:
+                clearText();
                 if (addNumber("1")) equalClicked = false;
                 t = false;
                 break;
             case R.id.button_two:
+                clearText();
                 if (addNumber("2")) equalClicked = false;
                 t = false;
                 break;
             case R.id.button_three:
+                clearText();
                 if (addNumber("3")) equalClicked = false;
                 t = false;
                 break;
             case R.id.button_four:
+                clearText();
                 if (addNumber("4")) equalClicked = false;
                 t = false;
                 break;
             case R.id.button_five:
+                clearText();
                 if (addNumber("5")) equalClicked = false;
                 t = false;
                 break;
             case R.id.button_six:
+                clearText();
                 if (addNumber("6")) equalClicked = false;
                 t = false;
                 break;
             case R.id.button_seven:
+                clearText();
                 if (addNumber("7")) equalClicked = false;
                 t = false;
                 break;
             case R.id.button_eight:
+                clearText();
                 if (addNumber("8")) equalClicked = false;
                 t = false;
                 break;
             case R.id.button_nine:
+                clearText();
                 if (addNumber("9")) equalClicked = false;
                 t = false;
                 break;
@@ -267,6 +277,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
 
+    }
+
+    private void clearText() {
+        if (equalClicked) {
+            textViewInputNumbers.setText("");
+        }
     }
 
     @Override
